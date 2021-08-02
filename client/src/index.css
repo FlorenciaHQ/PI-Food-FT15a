@@ -1,4 +1,7 @@
 body {
+  display: flex;
+  justify-content: center;
+  background-image: url('https://us.123rf.com/450wm/romastudio/romastudio1603/romastudio160300265/54088786-healthy-food-background-and-copy-space-studio-photography-of-white-paper-surrounded-by-fresh-vegetab.jpg?ver=6');
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
