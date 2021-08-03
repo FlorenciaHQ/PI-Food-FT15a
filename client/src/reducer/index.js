@@ -1,9 +1,10 @@
-import { GET_RECIPES, GET_BY_NAME, GET_TYPE_DIETS, GET_BY_TYPE_OF_DIET, ORDER_BY_NAME, ORDER_BY_LIKES} from '../actions'
+import { GET_RECIPES, GET_BY_NAME, GET_TYPE_DIETS, GET_BY_TYPE_OF_DIET, ORDER_BY_NAME, ORDER_BY_LIKES, RECIPE_DETAIL} from '../actions'
 
 const initialState= {
     recipes: [],
     allRecipes: [],
-    diets: []
+    diets: [],
+    detail: []
 }
 
 function rootReducer(state= initialState, action) {
@@ -36,7 +37,7 @@ function rootReducer(state= initialState, action) {
                 recipes: filtered
             }
         case ORDER_BY_NAME:
-            let todosRecipes= state.allRecipes
+            let todosRecipes= [...state.allRecipes]
             let orderName= action.payload === 'A-Z'? todosRecipes.sort((a,b) => {
                 if(a.title < b.title) return -1
                 if(a.title > b.title) return 1
@@ -48,16 +49,23 @@ function rootReducer(state= initialState, action) {
             })
             return {
                 ...state,
-                recipes: orderName
+                recipes: action.payload === 'default'? state.allRecipes : orderName
             }
         case ORDER_BY_LIKES:
-                let todos= state.allRecipes
-                let orderLike= action.payload === 'mayor'? todos.sort((a,b) => a.aggregateLikes - b.aggregateLikes) 
+                let todos= [...state.allRecipes]
+                let orderLike= action.payload === 'menor'? 
+                todos.sort((a,b) => a.aggregateLikes - b.aggregateLikes) 
                 : todos.sort((a,b) => b.aggregateLikes - a.aggregateLikes)
+                
                 return {
                     ...state,
-                    recipes: action.payload === 'todos' ? todos : orderLike
+                    recipes: action.payload === 'todos'? state.allRecipes : orderLike
                 }
+        case RECIPE_DETAIL:            
+            return {
+                ...state,
+                detail: action.payload
+            }
         default:
             return state;
     }

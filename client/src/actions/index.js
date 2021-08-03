@@ -6,6 +6,7 @@ export const GET_TYPE_DIETS= 'GET_TYPE_DIETS'
 export const GET_BY_TYPE_OF_DIET= 'GET_BY_TYPE_OF_DIET'
 export const ORDER_BY_NAME= 'ORDER_BY_NAME'
 export const ORDER_BY_LIKES= 'ORDER_BY_LIKES'
+export const RECIPE_DETAIL= 'RECIPE_DETAIL'
 
 export function getRecipes(){
     return async function(dispatch) {
@@ -63,5 +64,15 @@ export function orderByLikes(payload){
     return {
         type: ORDER_BY_LIKES,
         payload
+    }
+}
+
+export function recipeDetail(id){
+    return async function(dispatch){
+        const info= await axios.get('http://localhost:3001/recipes/' + id)
+        return dispatch({
+            type: RECIPE_DETAIL,
+            payload: info.data
+        })
     }
 }

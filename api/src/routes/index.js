@@ -71,7 +71,7 @@ router.get('/types', async (req, res)=> {
     let allRecipes= await axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&addRecipeInformation=true&number=100`)
     const types= await allRecipes.data.results.map(r=> r.diets)
     let diets= types.flat()
-    let typeDiets= [...new Set(diets)]
+    let typeDiets= [...new Set(diets),'vegetarian']
     typeDiets.forEach(r => {
         Diet.findOrCreate({
             where: { name: r }
