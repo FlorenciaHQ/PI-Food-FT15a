@@ -12,7 +12,6 @@ export default function Detail(props){
     const recipe= detail[0]
 
     useEffect(()=> {
-        console.log('eeeeeeeeeeee')
         dispatch(recipeDetail(props.match.params.id));
         setCambio(true)
     },[props.match.params.id, dispatch])
@@ -26,13 +25,13 @@ export default function Detail(props){
                     <img src={recipe.image? recipe.image : 
                      <img src='https://www.ecestaticos.com/image/clipping/e46e7340ef608f85706bdfb3dd69818f/la-proxima-dieta-efectiva-que-seguiras-se-basa-en-tu-plato.jpg' alt='img plato' />} alt='img comida' />
                     <h3>{recipe.dishTypes.join(', ')}</h3>
-                    <h4>{recipe.diets.join(', ')}</h4>
-                    <h5>Resumen del plato:</h5>
-                    <p>{recipe.summary}</p>
-                    <h5>Puntuación: {recipe.aggregateLikes}</h5>
-                    <h5>Nivel de "comida saludable": {recipe.healthScore}</h5>
-                    <h5>Paso a paso: </h5>
-                    <ol>{recipe.analyzedInstructions[0].steps.map((p)=> <li key={p.number}>{p.number} {p.step}</li>)}</ol>
+                    <h2>{recipe.vegetarian === true?  recipe.diets.join(', ')+', vegetarian' : recipe.diets.join(', ')}</h2>
+                    <h3>Resumen del plato:</h3>
+                    <p>{recipe.summary.replace(/<[^>]*>?/g, '')}</p>
+                    <h3>Puntuación: {recipe.aggregateLikes}</h3>
+                    <h3>Nivel de "comida saludable": {recipe.healthScore}</h3>
+                    <h3>Paso a paso: </h3>
+                    <ol>{recipe.analyzedInstructions[0].steps.map((p)=> <li key={p.number}>{p.step}</li>)}</ol>
                 </div> : <p>Cargando..</p>
 
             }
@@ -45,4 +44,4 @@ export default function Detail(props){
 // [ ] Resumen del plato
 // [ ] Puntuación
 // [ ] Nivel de "comida saludable"
-// [ ] Paso a paso
+// [ ] Paso a paso--         dangerouslySetInnerHTML={{__html: recipe.summary}}

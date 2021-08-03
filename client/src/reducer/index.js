@@ -32,9 +32,12 @@ function rootReducer(state= initialState, action) {
             const recipeDb= allRecipes.filter(r => r.createdDb)
             const filteredRcipesDb= recipeDb.filter(r=> r.diets.name === action.payload)
             const filtered= filteredRcipesDb.concat(filteredRcipesApi)
+            const vegetarianDb= recipeDb.filter(r=> r.diets.name === 'vegetarian')
+            const vegetarianAPI= allRecipes.filter(r => r.vegetarian === true)
+            const vegetarian= vegetarianDb.concat(vegetarianAPI)
             return{
                 ...state,
-                recipes: filtered
+                recipes: action.payload === 'vegetarian'? vegetarian : filtered
             }
         case ORDER_BY_NAME:
             let todosRecipes= [...state.allRecipes]
