@@ -26,11 +26,7 @@ module.exports = (sequelize) => {
       allowNull: true,
     },
     analyzedInstructions:{
-      type: DataTypes.STRING,
-      allowNull: true,
-    },
-    dishTypes: {
-      type: DataTypes.ENUM("main course","side dish","dessert", "appetizer","salad","bread","breakfast","soup","beverage","sauce","marinade","fingerfood","snack","drink"),
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     image:{
