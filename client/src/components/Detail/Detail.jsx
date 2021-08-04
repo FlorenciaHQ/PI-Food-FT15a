@@ -18,7 +18,7 @@ export default function Detail(props){
 
     return (
         <div>
-            <Link to='/home'>Home</Link>
+            <Link to='/home'><button>Home</button></Link>
             {detail.length?
                 <div>
                     <h1>{recipe.title}</h1>

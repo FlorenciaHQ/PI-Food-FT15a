@@ -1,4 +1,4 @@
-import { GET_RECIPES, GET_BY_NAME, GET_TYPE_DIETS, GET_BY_TYPE_OF_DIET, ORDER_BY_NAME, ORDER_BY_LIKES, RECIPE_DETAIL} from '../actions'
+import { GET_RECIPES, GET_BY_NAME, GET_TYPE_DIETS, GET_BY_TYPE_OF_DIET, ORDER_BY_NAME, ORDER_BY_LIKES, RECIPE_DETAIL, POST_RECIPE} from '../actions'
 
 const initialState= {
     recipes: [],
@@ -68,6 +68,10 @@ function rootReducer(state= initialState, action) {
             return {
                 ...state,
                 detail: action.payload
+            }
+        case POST_RECIPE:
+            return {
+                ...state
             }
         default:
             return state;
