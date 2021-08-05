@@ -31,7 +31,8 @@ export default function Detail(props){
                     <h3>Puntuación: {recipe.aggregateLikes}</h3>
                     <h3>Nivel de "comida saludable": {recipe.healthScore}</h3>
                     <h3>Paso a paso: </h3>
-                    <ol>{recipe.analyzedInstructions[0].steps.map((p)=> <li key={p.number}>{p.step}</li>)}</ol>
+                    <ol>{recipe.createdDb? recipe.analyzedInstructions.map((p)=><li key={Math.random()}>{p}</li>)
+                     :recipe.analyzedInstructions[0].steps.map((p)=> <li key={p.number}>{p.step}</li>)}</ol>
                 </div> : <p>Cargando..</p>
 
             }

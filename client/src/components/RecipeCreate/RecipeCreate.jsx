@@ -1,8 +1,17 @@
 import React, { useState } from 'react';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link, useHistory } from 'react-router-dom';
-import { getTypeDiets } from '../../actions';
+import { Link} from 'react-router-dom';
+import { getTypeDiets, postRecipe } from '../../actions';
+
+function validate(input){
+    let error= {}
+    if(!input.name) error.name= 'Obligatory field'
+    if(!input.summary) error.summary= 'Obligatory field'
+    if(typeof input.aggregateLikes !== 'number') error.aggregateLikes= 'It is not a number'
+    if(typeof input.healthScore !== 'number') error.healthScore= 'It is not a number'
+    if(!input.image.includes('https://')) error.image= 'It is not a valid address'
+}
 
 export default function RecipeCreate() {
     const dispatch = useDispatch()
@@ -14,7 +23,7 @@ export default function RecipeCreate() {
         summary: "",
         aggregateLikes: 0,
         healthScore: 0,
-        analyzedInstructions: "",
+        analyzedInstructions: '',
         image: "",
         diets: []
     })
@@ -28,6 +37,11 @@ export default function RecipeCreate() {
             ...input,
             [e.target.name]: e.target.value
         })
+        console.log(input.title)
+        console.log(input.summary)
+        console.log(input.aggregateLikes)
+        console.log(input.healthScore)
+        console.log(input.image)
     }
 
     function handleAddDiet(e) {
@@ -35,6 +49,7 @@ export default function RecipeCreate() {
             ...input,
             diets: [...input.diets, e.target.value]
         })
+        console.log(input.diets)
     }
 
     function handleSteps(e) {
@@ -53,6 +68,25 @@ export default function RecipeCreate() {
             ...input,
             analyzedInstructions: ''
         })
+        console.log(step)
+    }
+    
+    function handleSubmit(e){
+        setInput({
+            ...input,
+            analyzedInstructions: step
+        })
+        dispatch(postRecipe(input))
+        setInput({
+            title: "",
+            summary: "",
+            aggregateLikes: 0,
+            healthScore: 0,
+            analyzedInstructions: '',
+            image: "",
+            diets: []
+        })
+        setStep([])
     }
 
     return (
@@ -130,7 +164,7 @@ export default function RecipeCreate() {
                     </select>
                 </div>
                 <div>
-                    <button type='submit'>Save recipe</button>
+                    <button type='submit'onClick={(e)=> handleSubmit(e)}>Save recipe</button>
                 </div>
                 <div>
                     <button type='reset' form='general'>Create another recipe</button>
@@ -150,3 +184,17 @@ export default function RecipeCreate() {
 // Paso a paso          [{steps:[...input,{number: 0, step:"" }]}]
 // [ ] Posibilidad de seleccionar/agregar uno o más tipos de dietas
 // [ ] Botón/Opción para crear una nueva receta
+
+// function handleSteps(e) {
+//     e.preventDefault();
+//     setStep(e.target.value)
+// }
+
+// function handleSaveSteps(e){
+//     e.preventDefault();
+//     setInput({
+//         ...input,
+//         analyzedInstructions: [...input.analyzedInstructions,step]
+//     })
+//     setStep('')
+// }

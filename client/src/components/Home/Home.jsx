@@ -87,18 +87,18 @@ export default function Home(){
                     recipesPerPage={recipesPerPage}
                     paginado={paginado}
                 />
-            { actualRecipes.map(r=> {
+            { actualRecipes.map(r=> {                
                 return (
                     <div key={r.id}>
-                        <Link to={'/home/' + r.id} >
+                        <Link to={'/home/' + r.id}>
                             <Card image={r.image? r.image: <img src='https://www.ecestaticos.com/image/clipping/e46e7340ef608f85706bdfb3dd69818f/la-proxima-dieta-efectiva-que-seguiras-se-basa-en-tu-plato.jpg' alt='plato'/> } 
                             name={r.title} 
                             diets={r.createdDb? r.diets.map(r=> <p>{r.name}</p>) : r.diets.map(r=> <p>{r}</p>)}
-                            vegetarian={r.vegetarian === true? <p>vegetarian</p> : <p></p> }
+                            vegetarian={r.vegetarian === true? <p>vegetarian</p> : <p></p> }                            
                             />
                         </Link>
                     </div>
-                )
+                )                
             })
 
             }
