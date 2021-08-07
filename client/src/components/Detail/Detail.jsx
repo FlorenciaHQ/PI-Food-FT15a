@@ -15,8 +15,7 @@ export default function Detail(props){
         dispatch(recipeDetail(props.match.params.id));
         setCambio(true)
     },[props.match.params.id, dispatch])
-
-    let auxDiets= recipe.createdDb? recipe.diets.map(r=> r.name) : ''
+    
 
     return (
         <div>
@@ -27,11 +26,11 @@ export default function Detail(props){
                     <img src={recipe.image? recipe.image : 
                      <img src='https://www.ecestaticos.com/image/clipping/e46e7340ef608f85706bdfb3dd69818f/la-proxima-dieta-efectiva-que-seguiras-se-basa-en-tu-plato.jpg' alt='img plato' />} alt='img comida' />
                     <h3>{recipe.createdDb? null : recipe.dishTypes.join(', ')}</h3>
-                    <h2>{recipe.vegetarian === true ?  recipe.diets.join(', ') +', vegetarian' : auxDiets.join(', ')}</h2>
+                    <h2>{recipe.vegetarian === true ?  recipe.diets.join(', ') +', vegetarian' : recipe.diets.map(r=> r.name).join(', ')}</h2>
                     <h3>Resumen del plato:</h3>
                     <p>{recipe.summary.replace(/<[^>]*>?/g, '')}</p> 
-                    {recipe.aggregateLikes != 0 ? <h3>Puntuación: {recipe.aggregateLikes}</h3> : <h3>Puntuación: -</h3>}
-                    {recipe.healthScore != 0 ? <h3>Nivel de "comida saludable": {recipe.healthScore}</h3> : <h3>Nivel de "comida saludable": -</h3> }
+                    {recipe.aggregateLikes !== 0 ? <h3>Puntuación: {recipe.aggregateLikes}</h3> : <h3>Puntuación: -</h3>}
+                    {recipe.healthScore !== 0 ? <h3>Nivel de "comida saludable": {recipe.healthScore}</h3> : <h3>Nivel de "comida saludable": -</h3> }
                     {recipe.analyzedInstructions? <h3>Paso a paso: </h3> : <h3>Paso a paso: - </h3> }
                     <ul>{recipe.createdDb? <li>{recipe.analyzedInstructions}</li>
                      :recipe.analyzedInstructions[0].steps.map((p)=> <li key={p.number}>{p.step}</li>)}</ul>
