@@ -83,14 +83,13 @@ router.get('/types', async (req, res)=> {
 })
 
 router.post('/recipe', async (req, res)=> {
-    let {title, summary, aggregateLikes, healthScore, analyzedInstructions, dishTypes, image, diets}= req.body
+    let {title, summary, aggregateLikes, healthScore, analyzedInstructions, image, diets}= req.body
     const createRecipe= await Recipe.create({
         title, 
         summary, 
         aggregateLikes, 
         healthScore, 
         analyzedInstructions, 
-        dishTypes, 
         image
     })
     const recipeDb = await Diet.findAll({ where: { name: diets } })

@@ -6,28 +6,25 @@ import { getTypeDiets, postRecipe } from '../../actions';
 
 function validate(input) {
     let error = {}
-    input.title ? error.title = '' : error.title = 'Obligatory field'
-    !input.summary ? error.summary = 'Obligatory field' : error.summary = ''
-    input.diets.length < 1 ? error.diets = 'You must place at least one type of diet' : error.diets = ''
-    if(!input.image.includes('https://') && !input.image.includes('http://')){
-        error.image = 'It is not a valid address' 
-    } else{
-          error.image = ''
-    }
+    input.title ? error.title = '' : error.title ='Obligatory field'
+    !input.summary? error.summary = 'Obligatory field' : error.summary = ''
+    !input.image.includes('https://')? error.image = 'It is not a valid address' : error.image = ''
+    input.diets.length < 1? error.diets= 'You must place at least one type of diet': error.diets= ''
     return error
 }
 
 export default function RecipeCreate() {
     const dispatch = useDispatch()
     const diets = useSelector((state) => state.diets)
-
-    const [error, setError] = useState({})
+    const [render, setRender]= useState('')
+    const [error, setError]= useState({})
+    const [step, setStep] = useState([])
     const [input, setInput] = useState({
         title: "",
         summary: "",
         aggregateLikes: 0,
         healthScore: 0,
-        analyzedInstructions: "",
+        analyzedInstructions: '',
         image: "",
         diets: []
     })
@@ -37,10 +34,11 @@ export default function RecipeCreate() {
     }, [dispatch])
 
     function handleChange(e) {
-        setInput(input => ({
+        setInput({
             ...input,
-            [e.target.name]: e.target.value
-        }))
+            [e.target.name]: e.target.value 
+        })
+        console.log(input.title)
         setError(validate({
             ...input,
             [e.target.name]: e.target.value
@@ -58,40 +56,66 @@ export default function RecipeCreate() {
         }))
     }
 
-
-
-    function handleRemoveDiet(diet) {
+    function handleSteps(e) {
+        e.preventDefault();
         setInput({
             ...input,
-            diets: input.diets.filter(r => r !== diet)
+            analyzedInstructions: e.target.value
         })
     }
 
+    function handleSaveSteps(e) {
+        e.preventDefault();
+        setStep([...step, input.analyzedInstructions])
+        setInput({
+            ...input,
+            analyzedInstructions: ''
+        })
+    }
+
+    function handleChangeStep(e, i){  
+        setRender(e.target.value)
+        var algo = [...step]
+        algo[i] = render
+        setStep(algo)
+        console.log(algo)
+    }
+
+    function handleRemoveDiet(diet){
+        setInput({
+            ...input,
+            diets: input.diets.filter(r=> r !== diet)
+        })
+    }
+
+    function handleRemoveStep(el){
+        setStep(step.filter(r=> r !== el))
+    }
+
     function handleSubmit(e) {
-        if (input.title && input.summary && input.diets.length > 0) {
-            e.preventDefault();
-            console.log(input)
-            dispatch(postRecipe(input))
-            alert('Recipe successfully loaded')
-            setInput({
-                title: "",
-                summary: "",
-                aggregateLikes: 0,
-                healthScore: 0,
-                analyzedInstructions: '',
-                image: "",
-                diets: []
-            })
-        } else {
-            alert('Name, Sumari and Diet are required fields')
-        }
+        e.preventDefault();
+        setInput({
+            ...input,
+            analyzedInstructions: step
+        })
+        dispatch(postRecipe(input))
+        setInput({
+            title: "",
+            summary: "",
+            aggregateLikes: 0,
+            healthScore: 0,
+            analyzedInstructions: '',
+            image: "",
+            diets: []
+        })
+        setStep([])
     }
 
     return (
         <div>
             <Link to='/home'><button>Home</button></Link>
             <h1>Cargá tu propia receta!!!</h1>
-            <form id='general' onSubmit={(e) => handleSubmit(e)}>
+            <form id='general'>
                 <div>
                     <label>Name: </label>
                     <input
@@ -149,9 +173,23 @@ export default function RecipeCreate() {
                             placeholder="Instruction"
                             value={input.analyzedInstructions}
                             name='analyzedInstructions'
-                            onChange={(e) => handleChange(e)}
+                            onChange={(e) => handleSteps(e)}
                         />
+                        <button type='submit' onClick={(e) => handleSaveSteps(e)}>Save step</button>
                     </div>
+                    {step.map((r, i) => (
+                        <div key={Math.random()}>
+                            <label >Step {i +1}</label>
+                            <input 
+                            type='text'
+                            id={i}
+                            value={r}
+                            name={`Paso ${i+1}`}
+                            onChange={(e)=> handleChangeStep(e, i)}
+                            />
+                            <button onClick={()=> handleRemoveStep(r)}>X</button>
+                        </div>
+                    ))}
                 </div>
                 <div>
                     <select onChange={(e) => handleAddDiet(e)}>
@@ -160,7 +198,7 @@ export default function RecipeCreate() {
                         ))
                         }
                     </select>
-                    {input.diets.map((r, i) => (
+                    {input.diets.map((r, i)=> (
                         <div key={i}>
                             <p>{r}</p>
                             <button onClick={() => handleRemoveDiet(r)}>X</button>
@@ -169,7 +207,7 @@ export default function RecipeCreate() {
                     {error.diets && <p>{error.diets}</p>}
                 </div>
                 <div>
-                    <button type='submit' >Save recipe</button>
+                    <button type='submit' onClick={(e) => handleSubmit(e)}>Save recipe</button>
                 </div>
                 <div>
                     <button type='reset' form='general'>Create another recipe</button>
@@ -179,18 +217,41 @@ export default function RecipeCreate() {
     )
 
 }
+// Ruta de creación de recetas: debe contener
+
+// [ ] Un formulario controlado con los siguientes campos
+// Nombre
+// Resumen del plato
+// Puntuación
+// Nivel de "comida saludable"
+// Paso a paso          [{steps:[...input,{number: 0, step:"" }]}]
+// [ ] Posibilidad de seleccionar/agregar uno o más tipos de dietas
+// [ ] Botón/Opción para crear una nueva receta
 
 // function handleSteps(e) {
 //     e.preventDefault();
-//     setInput({
-//         ...input,
-//         analyzedInstructions: e.target.value
-//     })
+//     setStep(e.target.value)
 // }
-// function handleSteps(e) {
+
+// function handleSaveSteps(e){
 //     e.preventDefault();
 //     setInput({
 //         ...input,
-//         analyzedInstructions: [e.target.value]
+//         analyzedInstructions: [...input.analyzedInstructions,step]
 //     })
+//     setStep('')
+// }
+
+
+
+// <ol>{step.map((r) => (
+//     <li key={Math.random()}>{r}</li>
+// ))}</ol> 
+
+// function handleChangeStep(e, i){  
+//     console.log(e)
+//     var algo = [...step]
+//     algo[i] = e.target.value
+//     setStep(algo)
+//     console.log(algo)
 // }

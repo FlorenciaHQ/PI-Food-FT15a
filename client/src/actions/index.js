@@ -83,9 +83,9 @@ export function recipeDetail(id) {
     }
 }
 
-export function postRecipe() {
+export function postRecipe(payload) {
     return async function () {
-        const info = await axios.post('http://localhost:3001/recipe')
+        const info = await axios.post('http://localhost:3001/recipe', payload)
         return {
             type: POST_RECIPE,
             info
