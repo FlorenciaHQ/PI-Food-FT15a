@@ -1,0 +1,117 @@
+.home  {
+    /* display: flex; */
+    margin: 0;
+    /* background-image: url('https://images.unsplash.com/photo-1601662528567-526cd06f6582?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1558&q=80'); */
+    background-image: url('https://images.unsplash.com/photo-1495195129352-aeb325a55b65?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1510&q=80');
+    /* background-image: url('https://images.unsplash.com/photo-1498522271744-cdd435c13f24?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1508&q=80'); */
+    /* background-image: url('https://images.unsplash.com/photo-1587459803401-9d685b63b2cd?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1500&q=80')  ; */
+    width: 100%;
+    height: auto;
+    position: absolute;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+.home button{
+    background-color:  rgba(240, 228, 236, 0.712);
+    border-bottom-left-radius: 5px;
+    border-top-right-radius: 5px;
+    padding: 7px;
+
+}
+
+.home button:hover{
+    background-color: rgb(126, 123, 126);
+    color:white;
+}
+
+.home h1{
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+    /* margin-left: 15%; */
+    font-size: 50px;
+    font-style:italic;
+    /* font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; */
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.created {
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 2%;
+    margin-left: 10%;
+    right: 0%;
+    /* background-color:  rgba(197, 185, 185, 0.8);
+    padding: 2%;
+    padding-right: 2%; */
+}
+
+.select{
+    display: flex;
+    justify-content: center;
+    padding: 7px;    
+}
+
+.diets{
+    margin-right: 5%;
+
+}
+
+.byName{
+    margin-right: 5%;
+}
+
+.todos{
+    display: flex;
+    justify-content: center;
+    padding: 2%;
+}
+
+.todos button{
+    padding-left: 70px;
+    padding-right: 70px;
+}
+
+/* .cards{
+    overflow: hidden;
+} */
+.cards{
+    margin-left: 10%;
+}
+.card{
+    border: 1px solid #999;
+    box-sizing: border-box;
+    color: #444;
+    display: inline-block;
+    margin: 2%;
+    padding: 1em;
+    vertical-align: top;
+    width: 33,5%;
+}
+
+.card h3{
+    width: 250px;
+}
+
+.paginado button{
+    background-color: rgb(120, 189, 52);
+    border-color: rgb(66, 161, 66);
+}
+
+.paginado button:hover{
+    background-color: rgb(45, 95, 45);
+}
+
+/* .card{
+    border: 1px solid #999;
+    box-sizing: border-box;
+    color: #444;
+    display: inline-block;
+    margin: 2%;
+    padding: 1em;
+    vertical-align: top;
+    width: 33,5%;
+} */
+

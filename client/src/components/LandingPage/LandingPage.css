@@ -1,0 +1,39 @@
+
+.vista {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background-image: url('https://images.unsplash.com/photo-1494859802809-d069c3b71a8a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1500&q=80');
+    
+}
+
+.vista h1 {
+    display: flex;
+    justify-content: center;
+    margin-top: 100px;
+    font-size: 50px;
+    font-style:italic;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.vista h3{
+    display: flex;
+    justify-content: center;
+    font-style:italic;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.vista button{
+    display: flex;
+    border-bottom-left-radius: 5px;
+    border-top-right-radius: 5px;
+    padding: 7px;
+    padding-right: 8px;
+    margin-left: 45%; 
+}
+
+.vista button:hover{
+    background-color: rgb(126, 123, 126);
+    color:white;
+}

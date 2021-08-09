@@ -1,7 +1,8 @@
 import React from 'react';
 import { getByName } from '../../actions';
 import { useState } from 'react';
-import {useDispatch } from 'react-redux'
+import {useDispatch } from 'react-redux';
+import './SearchBar.css';
 
 export default function SearchBar(){
     const dispatch= useDispatch()
@@ -17,7 +18,7 @@ export default function SearchBar(){
         dispatch(getByName(name))
     }
     return(
-        <div>
+        <div className='search'>
             <input 
                 type='text'
                 placeholder='Nombre de receta a buscar...'
