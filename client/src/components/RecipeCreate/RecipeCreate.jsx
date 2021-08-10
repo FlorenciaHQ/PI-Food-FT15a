@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { getTypeDiets, postRecipe } from '../../actions';
+import './RecipeCreate.css'
 
 function validate(input) {
     let error = {}
@@ -88,9 +89,12 @@ export default function RecipeCreate() {
     }
 
     return (
-        <div>
+        <div className='create'>
+            <div className='buttonHome'>
             <Link to='/home'><button>Home</button></Link>
+            </div>
             <h1>Cargá tu propia receta!!!</h1>
+            <div className='formulario'>
             <form id='general' onSubmit={(e) => handleSubmit(e)}>
                 <div>
                     <label>Name: </label>
@@ -146,6 +150,7 @@ export default function RecipeCreate() {
                     <div>
                         <input
                             type='text'
+                            className='instruction'
                             placeholder="Instruction"
                             value={input.analyzedInstructions}
                             name='analyzedInstructions'
@@ -167,14 +172,15 @@ export default function RecipeCreate() {
                         </div>
                     ))}
                     {error.diets && <p>{error.diets}</p>}
-                </div>
-                <div>
-                    <button type='submit' >Save recipe</button>
-                </div>
-                <div>
+                </div>                
+                <div className='buttonCreate'>
                     <button type='reset' form='general'>Create another recipe</button>
                 </div>
+                <div className='buttonSave'>
+                    <button type='submit' >Save recipe</button>
+                </div>
             </form>
+            </div>
         </div>
     )
 

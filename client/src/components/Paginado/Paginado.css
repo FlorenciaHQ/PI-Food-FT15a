@@ -2,14 +2,12 @@
     display: flex;
     justify-content: center;
 }
-.button button{
-    background-color:  rgba(233, 229, 229, 0.8);
+.button button{    
     border-radius: 100%;
     padding: 13px;
 
 }
 
 .button button:hover{
-    background-color: rgb(126, 123, 126);
     color:white;
 }
