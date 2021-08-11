@@ -16,15 +16,17 @@ export default function SearchBar(){
     function handleOnClick(e){
         e.preventDefault();
         dispatch(getByName(name))
+        setName('')
     }
     return(
         <div className='search'>
             <input 
                 type='text'
-                placeholder='Nombre de receta a buscar...'
+                value={name}
+                placeholder='Search by recipe name...'
                 onChange={(e)=> handleOnChange(e)}
             />
-            <button type='submit' onClick={(e) => handleOnClick(e)}>Buscar</button>
+            <button type='submit' onClick={(e) => handleOnClick(e)}>Search</button>
         </div>
     )
 }

@@ -6,7 +6,7 @@
     background-image: url('https://images.unsplash.com/photo-1498522271744-cdd435c13f24?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1508&q=80');
     /* background-image: url('https://images.unsplash.com/photo-1587459803401-9d685b63b2cd?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1500&q=80')  ; */
     width: 100%;
-    height: 100%;
+    height: auto;
     position: absolute;    
     background-position: center center; 
     /* background-position: 0% 0%; */
@@ -53,14 +53,23 @@
     border: 2% solid rgba(197, 185, 185, 0.5);
     padding: 2%;
 } */
-.formulario{
+/* .formulario{
     border: 2% solid rgba(197, 185, 185, 0.5);
-}
+} */
 
 .formulario div{
     margin-bottom: 2%;
 }
 
+.formulario p{
+    color:rgb(248, 46, 46);
+}
+
+
+
+.instruction{
+    width: 400px;
+}
 .buttonCreate{
     float: left;    
 }

@@ -46,6 +46,7 @@ export default function RecipeCreate() {
             ...input,
             [e.target.name]: e.target.value
         }))
+        console.log(input.analyzedInstructions)
     }
 
     function handleAddDiet(e) {
@@ -93,7 +94,7 @@ export default function RecipeCreate() {
             <div className='buttonHome'>
             <Link to='/home'><button>Home</button></Link>
             </div>
-            <h1>Cargá tu propia receta!!!</h1>
+            <h1>Upload your own recipe!!</h1>
             <div className='formulario'>
             <form id='general' onSubmit={(e) => handleSubmit(e)}>
                 <div>
@@ -148,10 +149,11 @@ export default function RecipeCreate() {
                 <div>
                     <label>Step by step instructions: </label>
                     <div>
-                        <input
+                        <textarea
                             type='text'
                             className='instruction'
                             placeholder="Instruction"
+                            rows='7'
                             value={input.analyzedInstructions}
                             name='analyzedInstructions'
                             onChange={(e) => handleChange(e)}

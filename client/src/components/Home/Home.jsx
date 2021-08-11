@@ -58,7 +58,7 @@ export default function Home() {
 
     return (
         <div className='home'>
-            <Link to='/recipe' className='created'><button>Creá tu propia receta!!</button></Link>
+            <Link to='/recipe' className='created'><button>Create your own recipe!!</button></Link>
             <h1>FOOD</h1>
             <SearchBar />
             <div className='select'>
@@ -79,9 +79,7 @@ export default function Home() {
                 </select>
             </div>
             <div className='todos'>
-                <button onClick={(e) => handleOnClick(e)}>
-                    Mostrar todas las recetas
-                </button>
+                <button onClick={(e) => handleOnClick(e)}>Show all recipes</button>
             </div>
             <div className='cards'>
             {actualRecipes.map(r => {
