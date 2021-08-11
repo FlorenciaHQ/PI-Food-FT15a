@@ -10,5 +10,3 @@ export default function Card({image, name, diets, vegetarian}){
         </div>
     )
 }
-
-{/* <img src={image} alt='Img receta' width="250px" height="250px"/> */}

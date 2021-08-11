@@ -12,7 +12,7 @@ const router = Router();
 // Configurar los routers
 // Ejemplo: router.use('/auth', authRouter);
 
-//trae toda la ifo de la api
+
 const getApiInfo = async function () {
     const infoApi = await axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&addRecipeInformation=true&number=10`)
     
@@ -20,7 +20,6 @@ const getApiInfo = async function () {
 
 }
 
-//trae toda la info de la db
 const getDbInfo = async function () {
     return await Recipe.findAll({
         include: {
@@ -97,25 +96,6 @@ router.post('/recipe', async (req, res)=> {
     res.send('Receta creada exitosamente!')
 })
 
-// [ ] POST /recipe:
-// Recibe los datos recolectados desde el formulario controlado de la ruta de creación de recetas por body
-// Crea una receta en la base de datos
-
 
 module.exports = router;
 
-// const info = await infoApi.data.results.map((r) => {        
-    //     return {
-    //         id: r.id,
-    //         title: r.title,
-    //         summary: r.summary,
-    //         aggregateLikes: r.aggregateLikes,
-    //         healthScore: r.healthScore,
-    //         analyzedInstructions: r.analyzedInstructions.steps.map(r=> r.step),
-    //         dishTypes: r.dishTypes.map(r => r),
-    //         image: r.image,
-    //         servings: r.servings,
-    //         diets: r.diets.map(r => r)
-    //     }
-    // })    
-    // return info

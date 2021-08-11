@@ -1,5 +1,4 @@
 .create  {
-    /* display: flex; */
     margin: 0;
     /* background-image: url('https://images.unsplash.com/photo-1601662528567-526cd06f6582?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1558&q=80'); */
     /* background-image: url('https://images.unsplash.com/photo-1495195129352-aeb325a55b65?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1510&q=80'); */
@@ -9,11 +8,11 @@
     height: auto;
     position: absolute;    
     background-position: center center; 
-    /* background-position: 0% 0%; */
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
 }
+
 .create button{
     background-color:  rgba(240, 228, 236, 0.712);
     border-bottom-left-radius: 5px;
@@ -48,15 +47,6 @@
     font-size: 20px;    
 }
 
-/* .formulario{
-    background-color: rgba(197, 185, 185, 0.5);
-    border: 2% solid rgba(197, 185, 185, 0.5);
-    padding: 2%;
-} */
-/* .formulario{
-    border: 2% solid rgba(197, 185, 185, 0.5);
-} */
-
 .formulario div{
     margin-bottom: 2%;
 }
@@ -65,11 +55,10 @@
     color:rgb(248, 46, 46);
 }
 
-
-
 .instruction{
     width: 400px;
 }
+
 .buttonCreate{
     float: left;    
 }

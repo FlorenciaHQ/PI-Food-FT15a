@@ -74,8 +74,8 @@ export default function Home() {
                 </select>
                 <select className='byPuntuation' onChange={(e) => handleOrderLikes(e)}>
                     <option value='todos'>Default</option>
-                    <option value='mayor'>Mayor a menor puntuación</option>
-                    <option value='menor'>Menor a mayor puntuación</option>
+                    <option value='mayor'>Highest to lowest score</option>
+                    <option value='menor'>Lowest to highest score</option>
                 </select>
             </div>
             <div className='todos'>

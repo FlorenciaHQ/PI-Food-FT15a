@@ -187,18 +187,3 @@ export default function RecipeCreate() {
     )
 
 }
-
-// function handleSteps(e) {
-//     e.preventDefault();
-//     setInput({
-//         ...input,
-//         analyzedInstructions: e.target.value
-//     })
-// }
-// function handleSteps(e) {
-//     e.preventDefault();
-//     setInput({
-//         ...input,
-//         analyzedInstructions: [e.target.value]
-//     })
-// }
