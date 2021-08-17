@@ -60,9 +60,8 @@ export default function RecipeCreate() {
         }))
     }
 
-
-
-    function handleRemoveDiet(diet) {
+    function handleRemoveDiet(e, diet) {
+        e.preventDefault()
         setInput({
             ...input,
             diets: input.diets.filter(r => r !== diet)
@@ -72,7 +71,6 @@ export default function RecipeCreate() {
     function handleSubmit(e) {
         if (input.title && input.summary && input.diets.length > 0) {
             e.preventDefault();
-            console.log(input)
             dispatch(postRecipe(input))
             alert('Recipe successfully loaded')
             setInput({
@@ -92,7 +90,7 @@ export default function RecipeCreate() {
     return (
         <div className='create'>
             <div className='buttonHome'>
-            <Link to='/home'><button>Home</button></Link>
+                <Link to='/home'><button>Home</button></Link>
             </div>
             <h1>Upload your own recipe!!</h1>
             <div className='formulario'>
@@ -160,7 +158,7 @@ export default function RecipeCreate() {
                         />
                     </div>
                 </div>
-                <div>
+                <div className='diets'>
                     <select onChange={(e) => handleAddDiet(e)}>
                         {diets.map((r) => (
                             <option value={r.name} key={r.id}>{r.name}</option>
@@ -168,10 +166,10 @@ export default function RecipeCreate() {
                         }
                     </select>
                     {input.diets.map((r, i) => (
-                        <div key={i}>
-                            <p>{r}</p>
-                            <button onClick={() => handleRemoveDiet(r)}>X</button>
-                        </div>
+                        <ul key={i}>
+                            <li>{r}</li>
+                            <button onClick={(e) => handleRemoveDiet(e, r)}>X</button>
+                        </ul>
                     ))}
                     {error.diets && <p>{error.diets}</p>}
                 </div>                

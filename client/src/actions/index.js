@@ -29,7 +29,7 @@ export function getByName(name) {
                 payload: info.data
             })
         } catch (error) {
-            alert('Upss!! No existe ninguna receta con ese nombre.')
+            alert('Oops !! There is no recipe with that name.')
         }
     }
 }
@@ -78,7 +78,7 @@ export function recipeDetail(id) {
                 payload: info.data
             })
         } catch (error) {
-            alert('Upss!! No existe ninguna receta con ese id.')
+            alert('Oops !! There is no recipe with that id.')
         }
     }
 }

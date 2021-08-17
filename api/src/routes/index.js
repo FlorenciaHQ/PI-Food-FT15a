@@ -14,7 +14,7 @@ const router = Router();
 
 
 const getApiInfo = async function () {
-    const infoApi = await axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&addRecipeInformation=true&number=10`)
+    const infoApi = await axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&addRecipeInformation=true&number=100`)
     
     return infoApi.data.results
 
