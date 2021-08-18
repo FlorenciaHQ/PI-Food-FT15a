@@ -17,7 +17,7 @@ describe('Recipe routes', () => {
       } catch (err) {
         console.log(err)
       }    
-    });
+    }).timeout(47000);
 
     it('Si recibe un name que existe', async() => {
       try {
@@ -27,7 +27,7 @@ describe('Recipe routes', () => {
        }catch (err) {
         console.log(err)
       }    
-    });
+    }).timeout(47000);
 
     it('Si no recibe name', async() => {
       try {
@@ -37,7 +37,7 @@ describe('Recipe routes', () => {
        }catch (err) {
         console.log(err)
       }    
-    });
+    }).timeout(47000);
 
   }) 
 
@@ -50,7 +50,7 @@ describe('Recipe routes', () => {
       } catch (err) {
         console.log(err)
       }    
-    });
+    }).timeout(47000);
 
     it('should get 200', async() => {
       try {
@@ -60,6 +60,6 @@ describe('Recipe routes', () => {
        }catch (err) {
         console.log(err)
       }    
-    });
+    }).timeout(47000);
   }) 
 });
