@@ -42,12 +42,12 @@ function rootReducer(state= initialState, action) {
         case ORDER_BY_NAME:
             let todosRecipes= [...state.allRecipes]
             let orderName= action.payload === 'A-Z'? todosRecipes.sort((a,b) => {
-                if(a.title < b.title) return -1
-                if(a.title > b.title) return 1
+                if(a.title.toLowerCase() < b.title.toLowerCase()) return -1
+                if(a.title.toLowerCase() > b.title.toLowerCase()) return 1
                 return 0
             }) : todosRecipes.sort((a,b) => {
-                if(a.title < b.title) return 1
-                if(a.title > b.title) return -1
+                if(a.title.toLowerCase() < b.title.toLowerCase()) return 1
+                if(a.title.toLowerCase() > b.title.toLowerCase()) return -1
                 return 0
             })
             return {

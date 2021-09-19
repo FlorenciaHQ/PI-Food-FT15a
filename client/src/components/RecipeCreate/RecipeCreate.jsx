@@ -46,7 +46,6 @@ export default function RecipeCreate() {
             ...input,
             [e.target.name]: e.target.value
         }))
-        console.log(input.analyzedInstructions)
     }
 
     function handleAddDiet(e) {
