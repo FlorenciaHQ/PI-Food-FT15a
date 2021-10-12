@@ -59,19 +59,22 @@ export default function Home() {
     return (
         <div className='home'>
             <Link to='/recipe' className='created'><button>Create your own recipe!!</button></Link>
-            <h1>FOOD</h1>
+            <h1>Food Recipes</h1>
             <SearchBar />
             <div className='select'>
+                <span>Diets:</span>
                 <select className='diets' onChange={(e) => handleSelectTypeOfDiet(e)}>
                     {diet.map((diet) => (
                         <option value={diet.name} key={diet.id}>{diet.name}</option>
                     ))}
                 </select>
+                <span>Oreder by Name:</span>
                 <select className='byName' onChange={(e) => handleOrderName(e)}>
                     <option value='default'>Default</option>
                     <option value='A-Z'>A-Z</option>
                     <option value='Z-A'>Z-A</option>
                 </select>
+                <span>Oreder by Puntuation:</span>
                 <select className='byPuntuation' onChange={(e) => handleOrderLikes(e)}>
                     <option value='todos'>Default</option>
                     <option value='mayor'>Highest to lowest score</option>

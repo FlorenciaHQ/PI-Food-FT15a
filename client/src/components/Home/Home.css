@@ -15,7 +15,9 @@
 }
 
 .home button{
-    background-color:  rgba(240, 228, 236, 0.712);
+    /* background-color:  rgba(240, 228, 236, 0.712); */
+    background-color: rgb(77, 50, 77); 
+    color:white;
     border-bottom-left-radius: 5px;
     border-top-right-radius: 5px;
     padding: 7px;
@@ -23,7 +25,8 @@
 }
 
 .home button:hover{
-    background-color: rgb(126, 123, 126);
+    /* background-color: rgb(126, 123, 126); */
+    background-color: rgb(71, 3, 71);
     color:white;
 }
 
@@ -50,19 +53,36 @@
     padding: 7px;    
 }
 
+.select span{
+    background-color: rgb(80, 74, 73);
+    color: cornsilk;
+    padding-top: 5px;
+    padding-left: 7px;
+    padding-right: 7px;
+    border-top-left-radius: 10px;
+}
+
 .diets{
     margin-right: 5%;
+    border-bottom-right-radius: 10px;
 
 }
 
 .byName{
     margin-right: 5%;
+    border-bottom-right-radius: 10px;
+}
+
+.byPuntuation{
+    margin-right: 5%;
+    border-bottom-right-radius: 10px;
 }
 
 .todos{
     display: flex;
     justify-content: center;
     padding: 2%;
+
 }
 
 .todos button{
@@ -77,12 +97,15 @@
 .card{
     border: 1px solid #999;
     box-sizing: border-box;
-    color: #444;
+    /* color: #444; */
+    color: white;
     display: inline-block;
     margin: 2%;
     padding: 1em;
     vertical-align: top;
     width: 33,5%;
+    /* background-color: white; */
+    background-color: black;
 }
 
 .card h3{
