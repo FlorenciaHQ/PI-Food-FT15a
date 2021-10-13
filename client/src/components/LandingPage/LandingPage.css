@@ -40,7 +40,10 @@
 
 .vista button:hover{
     /* background-color: rgb(126, 123, 126); */
-    background-color: rgb(71, 3, 71);
+    /* background-color: rgb(71, 3, 71);
+    color:white; */
+    background-color: rgb(85, 63, 85);    
+    border-color: rgb(204, 163, 204);
     color:white;
 }
 

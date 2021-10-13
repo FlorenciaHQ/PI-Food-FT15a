@@ -158,6 +158,7 @@ export default function RecipeCreate() {
                     </div>
                 </div>
                 <div className='diets'>
+                    <span>Diets:</span>
                     <select onChange={(e) => handleAddDiet(e)}>
                         {diets.map((r) => (
                             <option value={r.name} key={r.id}>{r.name}</option>
