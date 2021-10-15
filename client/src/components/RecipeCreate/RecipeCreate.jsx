@@ -82,7 +82,8 @@ export default function RecipeCreate() {
                 diets: []
             })
         } else {
-            alert('Name, Sumari and Diet are required fields')
+            e.preventDefault();
+            alert('Name, Sumary and Diet are required fields')
         }
     }
 
